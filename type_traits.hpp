@@ -3,13 +3,13 @@
 namespace cdp
 {
 	template <typename T>
-	constexpr auto is_complete_impl(int = 0) -> decltype(!sizeof(T))
+	constexpr auto _is_complete(int = 0) -> decltype(!sizeof(T))
 	{
 		return true;
 	}
 
 	template <typename T>
-	constexpr bool is_complete_impl(...)
+	constexpr bool _is_complete(...)
 	{
 		return false;
 	}
@@ -17,6 +17,6 @@ namespace cdp
 	template <typename T>
 	constexpr bool is_complete()
 	{
-		return is_complete_impl<T>(0);
+		return _is_complete<T>(0);
 	}
 }
