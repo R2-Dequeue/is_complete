@@ -6,11 +6,12 @@
 
 class A;
 union B;
-enum temp1 : bool
+//enum Z; // Not Standard-compliant, but VS allows it
+enum class temp1 : bool
 {
 	C = cdp::is_complete<temp1>()
 };
-enum class temp2 : bool
+enum temp2 : bool
 {
 	D = cdp::is_complete<temp2>()
 };
@@ -36,8 +37,8 @@ int main()
 	std::cout << "is_complete<T>() should return false:" << '\n';
 	std::cout << cdp::is_complete<A>() << '\n';
 	std::cout << cdp::is_complete<B>() << '\n';
-	std::cout << static_cast<bool>(C) << '\n';
-	std::cout << static_cast<bool>(temp2::D) << '\n';
+	std::cout << static_cast<bool>(temp1::C) << '\n';
+	std::cout << static_cast<bool>(D) << '\n';
 	std::cout << static_cast<bool>(E) << '\n';
 	std::cout << cdp::is_complete<F>() << '\n';
 	std::cout << cdp::is_complete<G>() << '\n';
